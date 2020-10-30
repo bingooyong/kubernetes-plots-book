@@ -1,6 +1,6 @@
 {
   "kind": "Service",
-  "apiVersion": "v1beta3",
+  "apiVersion": "v1",
   "metadata": {
     "name": "storm-ui",
     "labels": {
@@ -8,17 +8,17 @@
     }
   },
   "spec": {
-    "createExternalLoadBalancer": true,
     "ports": [
       {
         "port": 8080,
         "targetPort": "storm-ui-http",
+        "nodePort": 30049,
         "protocol": "TCP"
       }
     ],
     "selector": {
       "name": "storm-ui"
     },
-    "type": "LoadBalancer"
+    "type": "NodePort"
   }
 }
